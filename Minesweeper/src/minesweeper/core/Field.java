@@ -1,4 +1,6 @@
 package minesweeper.core;
+import java.util.*;
+import minesweeper.core.Tile.State;
 
 /**
  * Field represents playing field and game logic.
@@ -44,6 +46,8 @@ public class Field {
 
         //generate the field content
         generate();
+        
+        System.out.println("Vytvoril som field");
     }
 
     /**
@@ -75,14 +79,39 @@ public class Field {
      * @param column column number
      */
     public void markTile(int row, int column) {
-        throw new UnsupportedOperationException("Method markTile not yet implemented");
+    	Tile tile = tiles[row][column];
+        if(tile.getState() == State.CLOSED){
+        	tile.setState(State.MARKED);
+        } else if(tile.getState() == State.MARKED){
+        	tile.setState(State.CLOSED);
+        } else {
+        	return;
+        }
     }
 
     /**
      * Generates playing field.
      */
     private void generate() {
-        throw new UnsupportedOperationException("Method generate not yet implemented");
+        int count = 0;
+        int randomRow =0;
+        int randomColumn =0;
+        Random random = new Random();
+    	while(count < mineCount){
+    		randomRow = random.nextInt(rowCount-1);
+    		randomColumn = random.nextInt(columnCount-1);
+    		if(!(tiles[randomRow][randomColumn] instanceof Mine)){
+    			tiles[randomRow][randomColumn] = new Mine();
+    			count++;
+    		} 
+    	}
+    	for(int r=0;r<rowCount;r++){
+    		for(int c=0;c<columnCount;c++){
+    			if(tiles[r][c] == null){
+    				tiles[r][c] = new Clue(this.countAdjacentMines(r,c));
+    			}
+    		}
+    	}
     }
 
     /**
@@ -119,4 +148,45 @@ public class Field {
 
         return count;
     }
+    
+    public int getRowCount(){
+    	return this.rowCount;
+    }
+    
+    public int getColumnCount(){
+    	return this.columnCount;
+    }
+    
+    public int getMineCount(){
+    	return this.mineCount;
+    }
+    
+    public Tile getTile(int row, int column){
+    	return tiles[row][column];
+    }
+    
+    public String toString(){
+    	String pole = "";
+    	for(int r =0;r<rowCount;r++){
+    		for(int c=0;c<columnCount;c++){
+    				pole = pole + tiles[r][c].toString() +" ";
+    		}
+    		pole = pole + "\n";
+    	}
+    	return pole;
+    }
+    
+    public void setState(String state){
+    	for(int r = 0;r < rowCount;r++){
+    		for(int c = 0;c < columnCount;c++){
+    			switch(state) {
+    			case "OPEN" :tiles[r][c].setState(State.OPEN);break;
+    			case "CLOSED" :tiles[r][c].setState(State.CLOSED);break;
+    			case "MARKED" :tiles[r][c].setState(State.MARKED);break;
+    			default:tiles[r][c].setState(State.MARKED);break;
+    			}
+    		}
+    	}
+    }
+    
 }

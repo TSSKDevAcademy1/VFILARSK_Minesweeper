@@ -14,4 +14,22 @@ public class Clue  extends Tile {
     public Clue(int value) {
         this.value = value;
     }
+
+	public int getValue() {
+		return value;
+	}
+	
+	public String toString(){
+		String string = "";
+		if(this.getState() == State.OPEN){
+			string = value+"";
+		} else if(this.getState() == State.MARKED){
+			string="M";
+		} else {
+			string="P";
+		}
+		
+		return string;
+	}
+	
 }
