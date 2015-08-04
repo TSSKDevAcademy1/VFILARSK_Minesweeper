@@ -3,12 +3,17 @@ package minesweeper.consoleui;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import minesweeper.UserInterface;
 import minesweeper.core.Field;
+import minesweeper.core.GameState;
 
 /**
  * Console user interface.
  */
-public class ConsoleUI {
+public class ConsoleUI implements UserInterface {
     /** Playing field. */
     private Field field;
     
@@ -27,24 +32,41 @@ public class ConsoleUI {
         }
     }
     
-    /**
-     * Starts the game.
-     * @param field field of mines and clues
-     */
-    public void newGameStarted(Field field) {
+    /* (non-Javadoc)
+	 * @see minesweeper.consoleui.UserInterface#newGameStarted(minesweeper.core.Field)
+	 */
+    @Override
+	public void newGameStarted(Field field) {
         this.field = field;
         do {
-            update();
-            processInput();
-            throw new UnsupportedOperationException("Resolve the game state - winning or loosing condition.");
+           update();
+           processInput();
+            
         } while(true);
     }
     
-    /**
-     * Updates user interface - prints the field.
-     */
-    public void update() {
-        throw new UnsupportedOperationException("Method update not yet implemented");
+    /* (non-Javadoc)
+	 * @see minesweeper.consoleui.UserInterface#update()
+	 */
+    @Override
+	public void update() {
+    	String pole = field.toString();
+    	System.out.printf("%4s"," ");
+    	for(int i = 1;i<=field.getColumnCount();i++){
+    		System.out.printf("%4s",i);
+    	}
+    	System.out.printf("%n");
+    	System.out.printf("%n");
+    	for(int r =0;r<field.getRowCount();r++){
+    		System.out.printf("%4s", Character.toString((char)(65+r)));
+    		for(int c=0;c<field.getColumnCount();c++){
+    				System.out.printf("%4s",field.getTile(r, c));
+    		}
+    		System.out.printf("%n");
+    	}
+
+		
+    	
     }
     
     /**
@@ -52,6 +74,25 @@ public class ConsoleUI {
      * Reads line from console and does the action on a playing field according to input string.
      */
     private void processInput() {
-        throw new UnsupportedOperationException("Method processInput not yet implemented");
+    	System.out.println();
+		System.out.println("Please enter your selection (X) EXIT, (MA1) MARK, (OB4) OPEN :");
+		String input = readLine();
+		Pattern p = Pattern.compile("X|((M|O)|[A-I][1-9])");
+		Matcher m = p.matcher(input);
+		boolean b = m.matches();
+		System.out.println(((int)input.charAt(1))-64+","+input.charAt(2));
+		if(b){
+			char firstLetter = input.charAt(0);
+			switch(firstLetter){
+			case 'X': field.setGameState(GameState.FAILED);break;
+			case 'M': field.markTile(((int)input.charAt(1))-64,input.charAt(2));break;
+			case 'O': field.openTile(((int)input.charAt(1))-64,input.charAt(2));break;
+			}
+		}
+		
     }
+
 }
+
+//format("%" + n + "s","x")
+//new Formatter.format("%4s",c).toString

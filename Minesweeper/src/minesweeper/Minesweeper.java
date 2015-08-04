@@ -8,19 +8,21 @@ import minesweeper.core.Field;
  */
 public class Minesweeper {
     /** User interface. */
-    private ConsoleUI userInterface;
+    private UserInterface userInterface;
  
     /**
      * Constructor.
      */
     private Minesweeper() {
-      //  userInterface = new ConsoleUI();
-        
+    	System.out.println("Ahoj " + System.getProperty("user.name"));
         Field field = new Field(9, 9, 10);
-       // userInterface.newGameStarted(field);
         field.setState("CLOSED");
-       System.out.println(field.toString());
-        System.out.println("vytvoril som minesweepera");
+        userInterface = new ConsoleUI();
+        
+       userInterface.newGameStarted(field);
+        
+       //System.out.println(field.toString());
+       // System.out.println("vytvoril som minesweepera");
     }
 
     /**

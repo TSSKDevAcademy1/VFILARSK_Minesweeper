@@ -1,5 +1,7 @@
 package minesweeper.core;
 import java.util.*;
+
+import minesweeper.consoleui.ConsoleUI;
 import minesweeper.core.Tile.State;
 
 /**
@@ -113,6 +115,18 @@ public class Field {
     		}
     	}
     }
+    
+    private int getNumberOf(Tile.State state) {
+		int openTile = 0;
+		for (int r = 0; r < rowCount; r++) {
+			for (int c = 0; c < columnCount; c++) {
+				if (tiles[r][c].getState() == state) {
+					openTile++;
+				}
+			}
+		}
+		return openTile;
+	}
 
     /**
      * Returns true if game is solved, false otherwise.
@@ -120,7 +134,9 @@ public class Field {
      * @return true if game is solved, false otherwise
      */
     private boolean isSolved() {
-        throw new UnsupportedOperationException("Method isSolved not yet implemented");
+    	if (mineCount == (rowCount*columnCount - getNumberOf(State.OPEN)))
+			return true;
+		else return false;
     }
 
     /**
@@ -187,6 +203,14 @@ public class Field {
     			}
     		}
     	}
+    }
+    
+    public GameState getGameState(){
+    	return state;
+    }
+    
+    public void setGameState(GameState state){
+    	this.state = state;
     }
     
 }

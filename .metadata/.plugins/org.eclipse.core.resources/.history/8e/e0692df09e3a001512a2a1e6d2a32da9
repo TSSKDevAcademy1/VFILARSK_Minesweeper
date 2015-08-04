@@ -1,0 +1,81 @@
+package minesweeper.consoleui;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+import minesweeper.UserInterface;
+import minesweeper.core.Field;
+
+/**
+ * Console user interface.
+ */
+public class ConsoleUI implements UserInterface {
+    /** Playing field. */
+    private Field field;
+    
+    /** Input reader. */
+    private BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+    
+    /**
+     * Reads line of text from the reader.
+     * @return line as a string
+     */
+    private String readLine() {
+        try {
+            return input.readLine();
+        } catch (IOException e) {
+            return null;
+        }
+    }
+    
+    /* (non-Javadoc)
+	 * @see minesweeper.consoleui.UserInterface#newGameStarted(minesweeper.core.Field)
+	 */
+    @Override
+	public void newGameStarted(Field field) {
+        this.field = field;
+        do {
+           update();
+           processInput();
+            throw new UnsupportedOperationException("Resolve the game state - winning or loosing condition.");
+        } while(true);
+    }
+    
+    /* (non-Javadoc)
+	 * @see minesweeper.consoleui.UserInterface#update()
+	 */
+    @Override
+	public void update() {
+    	String pole = field.toString();
+    	System.out.printf("%4s"," ");
+    	for(int i = 1;i<=field.getColumnCount();i++){
+    		System.out.printf("%4s",i);
+    	}
+    	System.out.printf("%n");
+    	System.out.printf("%n");
+    	for(int r =0;r<field.getRowCount();r++){
+    		System.out.printf("%4s",r+1);
+    		for(int c=0;c<field.getColumnCount();c++){
+    				System.out.printf("%4s",field.getTile(r, c));
+    		}
+    		System.out.printf("%n");
+    	}
+
+		System.out.println();
+		System.out.print("Please enter your selection (X) EXIT, (MA1) MARK, (OB4) OPEN :");
+    	
+    }
+    
+    /**
+     * Processes user input.
+     * Reads line from console and does the action on a playing field according to input string.
+     */
+    private void processInput() {
+        throw new UnsupportedOperationException("Method processInput not yet implemented");
+    }
+
+}
+
+//format("%" + n + "s","x")
+//new Formatter.format("%4s",c).toString
