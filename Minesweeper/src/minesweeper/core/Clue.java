@@ -26,7 +26,7 @@ public class Clue  extends Tile {
 		} else if(this.getState() == State.MARKED){
 			string="M";
 		} else {
-			string="J";
+			string="-";
 		}
 		
 		return string;

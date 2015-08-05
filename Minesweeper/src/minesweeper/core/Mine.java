@@ -15,7 +15,7 @@ public class Mine extends Tile {
 		} else if(this.getState() == State.MARKED){
 			string="M";
 		} else {
-			string="P";
+			string="-";
 		}
 		
 		return string;

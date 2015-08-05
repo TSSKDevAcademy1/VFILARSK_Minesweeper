@@ -38,6 +38,10 @@ public class ConsoleUI implements UserInterface {
     @Override
 	public void newGameStarted(Field field) {
         this.field = field;
+        if(field.getGameState() == GameState.SOLVED || field.getGameState() == GameState.FAILED) {
+        	System.out.println("Hra úspešne/neúspešne ukonèená");
+        	System.exit(0);
+        }
         do {
            update();
            processInput();
@@ -50,6 +54,7 @@ public class ConsoleUI implements UserInterface {
 	 */
     @Override
 	public void update() {
+    	System.out.println("Pocet nenajdenych min: "+ field.getRemainigMineCount());
     	String pole = field.toString();
     	System.out.printf("%4s"," ");
     	for(int i = 1;i<=field.getColumnCount();i++){
@@ -74,22 +79,34 @@ public class ConsoleUI implements UserInterface {
      * Reads line from console and does the action on a playing field according to input string.
      */
     private void processInput() {
-    	System.out.println();
-		System.out.println("Please enter your selection (X) EXIT, (MA1) MARK, (OB4) OPEN :");
-		String input = readLine();
-		Pattern p = Pattern.compile("X|((M|O)|[A-I][1-9])");
+    	try {
+	    	System.out.println();
+			System.out.println("Please enter your selection (X) EXIT, (MA1) MARK, (OB4) OPEN :");
+			String input = readLine();
+			handleInput(input);
+    	} catch (WrongFormatException ex) {
+    		System.out.println(ex.getMessage());
+    	}
+		
+		
+    }
+    
+    public void handleInput(String input) throws WrongFormatException{
+		Pattern p = Pattern.compile("X|(O|M)[A-I][1-9]");
 		Matcher m = p.matcher(input);
 		boolean b = m.matches();
-		System.out.println(((int)input.charAt(1))-64+","+input.charAt(2));
+		System.out.println("presiel");
 		if(b){
+			System.out.println("presiel vzor");
 			char firstLetter = input.charAt(0);
 			switch(firstLetter){
 			case 'X': field.setGameState(GameState.FAILED);break;
-			case 'M': field.markTile(((int)input.charAt(1))-64,input.charAt(2));break;
-			case 'O': field.openTile(((int)input.charAt(1))-64,input.charAt(2));break;
+			case 'M': field.markTile(((int)input.charAt(1))-65,((int)input.charAt(2))-49);break;
+			case 'O': field.openTile(((int)input.charAt(1))-65,((int)input.charAt(2))-49);break;
 			}
+		} else {
+			throw new WrongFormatException("Nespravny format");
 		}
-		
     }
 
 }
