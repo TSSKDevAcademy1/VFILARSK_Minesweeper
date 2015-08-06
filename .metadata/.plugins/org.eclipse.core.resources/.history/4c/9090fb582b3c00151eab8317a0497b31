@@ -1,0 +1,56 @@
+package minesweeper;
+
+import minesweeper.consoleui.ConsoleUI;
+import minesweeper.core.Field;
+
+/**
+ * Main application class.
+ */
+public class Minesweeper {
+    /** User interface. */
+    private UserInterface userInterface;
+    private long startMillis;
+    private BestTimes bestTimes = new BestTimes();
+    private static Minesweeper instance;
+    
+ 
+    /**
+     * Constructor.
+     */
+    private Minesweeper() {
+    	instance = this;
+    	System.out.println("Ahoj " + System.getProperty("user.name"));
+    	startMillis = System.currentTimeMillis();
+        Field field = new Field(9, 9, 10);
+        
+        userInterface = new ConsoleUI();
+        
+       userInterface.newGameStarted(field);
+       BestTimes casy = new BestTimes();
+       casy.toString();
+       System.out.println("Asi nejdes");
+        
+       //System.out.println(field.toString());
+       // System.out.println("vytvoril som minesweepera");
+    }
+    
+    public int getPlayingSeconds(){
+    	return (int)((System.currentTimeMillis() - startMillis)/1000);
+    }
+    
+    public BestTimes getBestTimes(){
+    	return bestTimes;
+    }
+
+    public static Minesweeper getInstance(){
+    	return instance;
+    }
+    /**
+     * Main method.
+     * @param args arguments
+     */
+    public static void main(String[] args) {
+        new Minesweeper();
+    }
+    
+}

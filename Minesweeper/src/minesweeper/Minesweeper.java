@@ -9,12 +9,20 @@ import minesweeper.core.Field;
 public class Minesweeper {
     /** User interface. */
     private UserInterface userInterface;
+    private long startMillis;
+    private BestTimes bestTimes = new BestTimes();
+    private static Minesweeper instance;
+    
  
     /**
      * Constructor.
      */
     private Minesweeper() {
+    	instance = this;
+    	 BestTimes casy = new BestTimes();
+         System.out.println(casy.toString());
     	System.out.println("Ahoj " + System.getProperty("user.name"));
+    	startMillis = System.currentTimeMillis();
         Field field = new Field(9, 9, 10);
         
         userInterface = new ConsoleUI();
@@ -24,7 +32,18 @@ public class Minesweeper {
        //System.out.println(field.toString());
        // System.out.println("vytvoril som minesweepera");
     }
+    
+    public int getPlayingSeconds(){
+    	return (int)((System.currentTimeMillis() - startMillis)/1000);
+    }
+    
+    public BestTimes getBestTimes(){
+    	return bestTimes;
+    }
 
+    public static Minesweeper getInstance(){
+    	return instance;
+    }
     /**
      * Main method.
      * @param args arguments
@@ -32,4 +51,5 @@ public class Minesweeper {
     public static void main(String[] args) {
         new Minesweeper();
     }
+    
 }
