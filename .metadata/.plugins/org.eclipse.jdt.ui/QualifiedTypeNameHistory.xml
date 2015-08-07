@@ -9,6 +9,7 @@
 <fullyQualifiedTypeName name="minesweeper.core.Field"/>
 <fullyQualifiedTypeName name="minesweeper.core.Clue"/>
 <fullyQualifiedTypeName name="minesweeper.core.Tile.State"/>
-<fullyQualifiedTypeName name="java.util.Collections"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="java.util.Formatter"/>
+<fullyQualifiedTypeName name="java.util.Collections"/>
 </qualifiedTypeNameHistroy>

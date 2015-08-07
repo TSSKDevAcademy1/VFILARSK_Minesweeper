@@ -1,0 +1,174 @@
+package register;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Formatter;
+
+/**
+ * User interface of the application.
+ */
+public class ConsoleUI {
+    /** register.Register of persons. */
+    private Register register;
+    
+    /**
+     * In JDK 6 use Console class instead.
+     * @see readLine()
+     */
+    private BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+    
+    /**
+     * Menu options.
+     */
+    private enum Option {
+        PRINT, ADD, UPDATE, REMOVE, FIND, EXIT
+    };
+    
+    public ConsoleUI(Register register) {
+        this.register = register;
+    }
+    
+    public void run() {
+        while (true) {
+            switch (showMenu()) {
+                case PRINT:
+                    printRegister();
+                    break;
+                case ADD:
+                    addToRegister();
+                    break;
+                case UPDATE:
+                    updateRegister();
+                    break;
+                case REMOVE:
+                    removeFromRegister();
+                    break;
+                case FIND:
+                    findInRegister();
+                    break;
+                case EXIT:
+                    return;
+            }
+        }
+    }
+    
+    private String readLine() {
+        //In JDK 6.0 and above Console class can be used
+        //return System.console().readLine();
+        
+        try {
+            return input.readLine();
+        } catch (IOException e) {
+            return null;
+        }
+    }
+    
+    private Option showMenu() {
+        System.out.println("Menu.");
+        for (Option option : Option.values()) {
+            System.out.printf("%d. %s%n", option.ordinal() + 1, option);
+        }
+        System.out.println("-----------------------------------------------");
+        
+        int selection = -1;
+        do {
+            System.out.println("Option: ");
+            selection = Integer.parseInt(readLine());
+        } while (selection <= 0 || selection > Option.values().length);
+        
+        return Option.values()[selection - 1];
+    }
+    
+    //TODO: Implement the method printRegister
+    private void printRegister() {
+    	register.vypis();
+    }
+    
+    private void addToRegister() {
+        register.vypis();
+    }
+    
+    //TODO: Implement the method updateRegister
+    private void updateRegister() {
+        System.out.println("Index menenej osoby");
+        int index = Integer.parseInt(readLine());
+        System.out.println("Napis meno a priezvisko");
+        String name = readLine();
+        System.out.println("Napis telefonne cislo");
+        String number = readLine();
+        register.getPerson(index-1).setName(name);
+        register.getPerson(index-1).setPhoneNumber(number);
+    }
+    
+    //TODO: Implement the method findInRegister
+    private void findInRegister() {
+        System.out.println("1.Podla mena");
+        System.out.println("2.Podla cisla");
+        Integer choice = Integer.parseInt(readLine());
+        switch(choice){
+        	case 1 :System.out.println("Zadaj meno");
+        		String name = readLine();
+        		System.out.println(register.findPersonByName(name)); 
+        		break;
+        	case 2 : System.out.println("Zadaj cislo");
+        		String number = readLine();
+        		System.out.println(register.findPersonByPhoneNumber(number));
+        		break;
+        }
+    }
+    
+    private void removeFromRegister() {
+        System.out.println("Enter index: ");
+        int index = Integer.parseInt(readLine());
+        Person person = register.getPerson(index - 1);
+        register.removePerson(person);
+    }
+    
+    public void init(){
+    	System.out.println("Chces pouzit: \n 1. Array \n 2. List");
+    	String choice = readLine();
+    	switch(choice){
+    	case "1" : Register register = new ListRegister();
+    	register.addPerson(new Person("Fi3lfsdcxyip Filarsky", "09001213456"));
+        register.addPerson(new Person("Fil4sdc&xaip Filarsky", "0900122123452"));
+        register.addPerson(new Person("Vlads6aimXCir Filarsky", "09004123451"));
+        register.addPerson(new Person("Filisa1p FiVXCVlarsky", "09001123456"));
+        register.addPerson(new Person("Filip&V1 Filarsky", "09001234456"));
+        register.addPerson(new Person("Draho Xt21ina Filarska", "0900123452"));
+        register.addPerson(new Person("Vladimir110 Filarsky", "0900123451"));
+        register.addPerson(new Person("Filip Fi02larsky", "09001234256"));
+        register.addPerson(new Person("Filip Fila32rsky", "09001234456"));
+        register.addPerson(new Person("Dra1hotina251 Filarska", "09100123452"));
+        register.addPerson(new Person("Vlad47imir F4ilarsky", "0900123451"));
+        register.addPerson(new Person("Fil2ip Filars7ky", "0900123456"));
+        register.addPerson(new Person("Fi3lip Filarsk8y", "0900123456"));
+        register.addPerson(new Person("Dr4ahotina Fila9rska", "0900123452"));
+        register.addPerson(new Person("Vladi7DASmir Fil6arsky", "0900123451"));
+        register.addPerson(new Person("Dr4ahotina Filars2ka", "0900123452"));
+        register.addPerson(new Person("Vladi7DeeASmir Filarsky", "090012345"));
+        register.addPerson(new Person("Vladi7DArrSmir Filarsky", "090541201231"));
+        register.addPerson(new Person("Vladi7DAffSmir Filarsky", "090120451"));
+        register.addPerson(new Person("Vladi7DAddSmir Filarsky", "12223451"));
+        
+        register.addPerson(new Person("Vladi7DASmiaar Filarsky", "00127783451"));
+        register.addPerson(new Person("Vladi7DASmirxas Filarsky", "00988123451"));
+        register.addPerson(new Person("Vladi7DASmirxas Filarsky33", "3300988123451"));
+       
+        register.addPerson(new Person("Vladi7DASmirxasdsdsa Filarsky", "009881415123451"));
+        register.addPerson(new Person("Vladi7DASmirxasaaa Filarsky33", "3300974188123451"));
+        ConsoleUI ui = new ConsoleUI(register);
+        ui.run();break;
+    	case "2" : Register register1 = new ArrayRegister(20);
+    	register1.addPerson(new Person("Dra1hotina251 Filarska", "09100123452"));
+        register1.addPerson(new Person("Vlad47imir F4ilarsky", "0900123451"));
+        register1.addPerson(new Person("Fil2ip Filars7ky", "0900123456"));
+        register1.addPerson(new Person("Fi3lip Filarsk8y", "0900123456"));
+        ConsoleUI ui1 = new ConsoleUI(register1);
+        ui1.run();
+    	break;
+    	}
+    }
+    
+
+}

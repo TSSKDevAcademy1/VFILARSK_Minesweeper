@@ -1,0 +1,59 @@
+.column1{
+	width: 8,3%;
+}
+.column2{
+	width: 16,6%;
+}
+.column3{
+	width: 24,9%;
+}
+.column4{
+	width: 33,2%;
+}
+.column5{
+	width: 41,5%;
+}
+.column6{
+	width: 50%;
+}
+.column7{
+	width: 58,3%;
+}
+.column8{
+	width: 66,6%;
+}
+.column9{
+	width: 74,9%;
+}
+.column10{
+	width: 83,2%;
+}
+.column11{
+	width: 91,5%;
+}
+.column2{
+	width: 100%;
+}
+
+.center{
+	margin: auto;
+	width: 50%;
+	
+	border-width: 6px;
+	border-style: solid;
+}
+
+#new-entry{
+
+	
+}
+
+#btn-add{
+	
+}
+
+#todo-list{
+	
+}
+#btn-delete{
+	
