@@ -45,10 +45,11 @@ public class BestTimes implements Iterable<BestTimes.PlayerTime> {
         Iterator<PlayerTime> fIterator = playerTimes.iterator();
         int j = 1;
         while(fIterator.hasNext()){
-        	f.format("Meno: %s Cas: %d \n", fIterator.next().getName(), fIterator.next().getTime());
+        	f.format(fIterator.next().toString());
         	j++;
         }
         return f.toString();
+        
     }
 
     /**

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="Arrays"/>
+	<classpathentry kind="src" path="BasicJavaClasses"/>
+	<classpathentry kind="src" path="Collections"/>
+	<classpathentry kind="src" path="Exceptions"/>
+	<classpathentry kind="src" path="IO"/>
+	<classpathentry kind="src" path="JavaOOP"/>
+	<classpathentry kind="src" path="JDBC"/>
+	<classpathentry kind="src" path="LanguageBasics"/>
+	<classpathentry kind="src" path="Overview"/>
+	<classpathentry kind="src" path="Reflection"/>
+	<classpathentry kind="src" path="Swing"/>
+	<classpathentry kind="src" path="Threads"/>
+	<classpathentry kind="src" path="UsefulJavaClasses"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

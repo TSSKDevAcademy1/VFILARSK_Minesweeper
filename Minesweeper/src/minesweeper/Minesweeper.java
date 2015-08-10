@@ -2,6 +2,7 @@ package minesweeper;
 
 import minesweeper.consoleui.ConsoleUI;
 import minesweeper.core.Field;
+import minesweeper.core.Settings;
 
 /**
  * Main application class.
@@ -12,7 +13,7 @@ public class Minesweeper {
     private long startMillis;
     private BestTimes bestTimes = new BestTimes();
     private static Minesweeper instance;
-    
+    private Settings setting;
  
     /**
      * Constructor.
@@ -51,5 +52,15 @@ public class Minesweeper {
     public static void main(String[] args) {
         new Minesweeper();
     }
+
+	public Settings getSetting() {
+		return setting;
+	}
+
+	public void setSetting(Settings setting) {
+		this.setting = setting;
+	}
+    
+   
     
 }
