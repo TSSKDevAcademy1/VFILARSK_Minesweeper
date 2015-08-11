@@ -1,5 +1,4 @@
 INDEX VERSION 1.127+D:\workspace-ecplipse\VFILARSK_Minesweeper\.metadata\.plugins\org.eclipse.jdt.core
-1769093953.index
 1225212985.index
 30765161.index
 1995173708.index
@@ -8,7 +7,6 @@ INDEX VERSION 1.127+D:\workspace-ecplipse\VFILARSK_Minesweeper\.metadata\.plugin
 4155206848.index
 163172794.index
 1697886153.index
-733439246.index
 3974580528.index
 1026953078.index
 1299022128.index

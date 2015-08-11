@@ -1,6 +1,7 @@
 package minesweeper.core;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -51,22 +52,39 @@ public class Settings implements Serializable{
 		return rowCount*columnCount*mineCount;
 	}
 	
-	public void Save() throws UnsupportedEncodingException, FileNotFoundException, IOException{
-		try (Writer writer = new BufferedWriter(new OutputStreamWriter(
-	              new FileOutputStream(System.getProperty("user.home") + System.getProperty("file.separator") + "minesweeper.settings"), "utf-8"))) {
-	}
+	public void save() throws IOException {
+		/*File f = new File("uloz.bin");
+		if(f.exists()){
 		FileOutputStream fOutStream = new FileOutputStream(SETTING_FILE);
 		ObjectOutputStream oOutStream = new ObjectOutputStream(fOutStream);
 		oOutStream.writeObject(this);
 		oOutStream.close();
+		} else {Writer writer = new BufferedWriter(new OutputStreamWriter(
+	              new FileOutputStream("uloz.bin")));
+				this.Save();
+			
+		} */
+		File file = new File("uloz.bin");
+        FileOutputStream fOutputStream = new FileOutputStream(file);
+        ObjectOutputStream oOutputStream = new ObjectOutputStream(fOutputStream);
+       
+        oOutputStream.writeObject(this);
+        oOutputStream.close();
 	}
 	
 	public static Settings load() throws IOException, ClassNotFoundException{
-		FileInputStream fInStream = new FileInputStream(SETTING_FILE);
-		ObjectInputStream oInStream = new ObjectInputStream(fInStream);
-		Settings setr = (Settings)oInStream.readObject();
-		oInStream.close();
-		return setr;
+		File f = new File("uloz.bin");
+		if (f.exists()) {
+			try (FileInputStream fInStream = new FileInputStream("uloz.bin");
+					ObjectInputStream oInStream = new ObjectInputStream(fInStream);) {
+
+				Settings setr = (Settings) oInStream.readObject();
+				oInStream.close();
+				return setr;
+			}
+		} else {
+			return new Settings(5, 5, 1);
+		}
 	}
 	
 }

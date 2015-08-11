@@ -9,7 +9,12 @@ import java.util.regex.Pattern;
  * register.Person.
  */
 public class Person implements Comparable<Person>, Serializable{
-    /** Name of this person. */
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/** Name of this person. */
     private String name;
     
     /** Phone number of this person. */

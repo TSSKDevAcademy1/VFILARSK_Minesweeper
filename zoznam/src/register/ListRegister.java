@@ -36,6 +36,7 @@ public class ListRegister implements Register, Serializable {
 	public void addPerson(Person person) {
 		if(!(this.findPersonByName(person.getName()) instanceof Object) && !(this.findPersonByPhoneNumber(person.getPhoneNumber()) instanceof Object)){
 			persons.add(person);
+			
 		}
 		
 		

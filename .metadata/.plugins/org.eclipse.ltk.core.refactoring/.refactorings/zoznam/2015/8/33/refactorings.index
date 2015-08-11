@@ -1,2 +1,4 @@
 1439192473395	Move compilation units
 1439210974958	Rename package 'src.register'
+1439303058832	Rename type 'RegisterLoader'
+1439303134881	Extract interface 'RegisterLoader'

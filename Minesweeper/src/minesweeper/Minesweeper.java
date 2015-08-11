@@ -1,5 +1,9 @@
 package minesweeper;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+
 import minesweeper.consoleui.ConsoleUI;
 import minesweeper.core.Field;
 import minesweeper.core.Settings;
@@ -17,19 +21,25 @@ public class Minesweeper {
  
     /**
      * Constructor.
+     * @throws IOException 
+     * @throws ClassNotFoundException 
      */
-    private Minesweeper() {
+    private Minesweeper() throws ClassNotFoundException, IOException {
     	instance = this;
     	 BestTimes casy = new BestTimes();
          System.out.println(casy.toString());
     	System.out.println("Ahoj " + System.getProperty("user.name"));
     	startMillis = System.currentTimeMillis();
-        Field field = new Field(9, 9, 10);
+       // Field field = new Field(9, 9, 10);
         
         userInterface = new ConsoleUI();
         
+      // userInterface.newGameStarted(field);
+       setting = Settings.load();
+       Field field = new Field(setting.getColumnCount(), setting.getRowCount(), setting.getMineCount());
+       this.setSetting(setting);
        userInterface.newGameStarted(field);
-        
+     
        //System.out.println(field.toString());
        // System.out.println("vytvoril som minesweepera");
     }
@@ -48,8 +58,10 @@ public class Minesweeper {
     /**
      * Main method.
      * @param args arguments
+     * @throws IOException 
+     * @throws ClassNotFoundException 
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException, IOException {
         new Minesweeper();
     }
 
@@ -57,8 +69,9 @@ public class Minesweeper {
 		return setting;
 	}
 
-	public void setSetting(Settings setting) {
+	public void setSetting(Settings setting) throws UnsupportedEncodingException, FileNotFoundException, IOException {
 		this.setting = setting;
+		this.setting.save();
 	}
     
    
