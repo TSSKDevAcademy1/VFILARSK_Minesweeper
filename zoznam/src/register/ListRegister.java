@@ -16,8 +16,7 @@ public class ListRegister implements Register, Serializable {
 	
 	@Override
 	public int getCount() {
-		persons.size();
-		return 0;
+		return persons.size();
 	}
 
 	

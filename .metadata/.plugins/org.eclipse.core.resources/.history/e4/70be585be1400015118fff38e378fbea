@@ -1,0 +1,8 @@
+package microunit;
+
+public class AssertionException extends RuntimeException {
+
+	public AssertionExcetion(String message, &throwable cause){
+		super(message,cause);
+	}
+}

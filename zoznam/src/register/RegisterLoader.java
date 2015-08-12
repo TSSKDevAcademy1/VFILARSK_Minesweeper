@@ -1,11 +1,12 @@
 package register;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public interface RegisterLoader {
 
-	void save(Register register) throws IOException;
+	void save(Register register)  ;
 
-	Register load() throws ClassNotFoundException, IOException;
+	Register load() ;
 
 }

@@ -88,7 +88,11 @@ public class ConsoleUI {
     }
     
     private void addToRegister() {
-        register.vypis();
+    	System.out.println("Napis meno a priezvisko");
+        String name = readLine();
+        System.out.println("Napis telefonne cislo");
+        String number = readLine();
+        register.addPerson(new Person(name,number));;
     }
     
     //TODO: Implement the method updateRegister
