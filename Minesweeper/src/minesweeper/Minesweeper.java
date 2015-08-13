@@ -27,12 +27,12 @@ public class Minesweeper {
     private Minesweeper() throws ClassNotFoundException, IOException {
     	instance = this;
     	 BestTimes casy = new BestTimes();
-         System.out.println(casy.toString());
+    	 System.out.println(casy.toString());
     	System.out.println("Ahoj " + System.getProperty("user.name"));
     	startMillis = System.currentTimeMillis();
        // Field field = new Field(9, 9, 10);
         
-        userInterface = new ConsoleUI();
+        userInterface = new ConsoleUI(bestTimes);
         
       // userInterface.newGameStarted(field);
        setting = Settings.load();
@@ -41,7 +41,7 @@ public class Minesweeper {
        userInterface.newGameStarted(field);
      
        //System.out.println(field.toString());
-       // System.out.println("vytvoril som minesweepera");
+       System.out.println("Hra skoncila v maine");
     }
     
     public int getPlayingSeconds(){

@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import minesweeper.BestTimes;
 import minesweeper.UserInterface;
 import minesweeper.core.Field;
 import minesweeper.core.GameState;
@@ -14,12 +15,17 @@ import minesweeper.core.GameState;
  * Console user interface.
  */
 public class ConsoleUI implements UserInterface {
+	long time = System.currentTimeMillis();
     /** Playing field. */
     private Field field;
+    private BestTimes bestTimes;
     
     /** Input reader. */
     private BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
     
+    public ConsoleUI(BestTimes bestTimes){
+    	this.bestTimes = bestTimes;
+    }
     /**
      * Reads line of text from the reader.
      * @return line as a string
@@ -54,6 +60,8 @@ public class ConsoleUI implements UserInterface {
 	 */
     @Override
 	public void update() {
+    	if(field.getGameState().equals(GameState.PLAYING)){
+    	System.out.println((System.currentTimeMillis() - time)/1000);
     	System.out.println("Pocet nenajdenych min: "+ field.getRemainigMineCount());
     	String pole = field.toString();
     	System.out.printf("%4s"," ");
@@ -69,7 +77,19 @@ public class ConsoleUI implements UserInterface {
     		}
     		System.out.printf("%n");
     	}
-
+    	} else if(field.getGameState().equals(GameState.SOLVED)){
+    		System.out.println("Vyhral si");
+    		System.out.printf("Vyhral si v case: ");
+    		long time1 = ((System.currentTimeMillis() - time)/1000);
+    		System.out.println(time);
+    		System.out.println("Ako sa volas?");
+    		String name = readLine();
+    		bestTimes.addPlayerTime(name,time1);
+    		
+    		
+    	} else {
+    		System.out.println("Prehral si");
+    	}
 		
     	
     }

@@ -6,12 +6,17 @@ import java.util.Collections;
 import java.util.Formatter;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 
 
 public class ListRegister implements Register, Serializable {
 
+	/**
+	 * 
+	 */
+	
 	private List<Person> persons = new ArrayList<Person>();
 	
 	@Override
@@ -34,8 +39,7 @@ public class ListRegister implements Register, Serializable {
 	@Override
 	public void addPerson(Person person) {
 		if(!(this.findPersonByName(person.getName()) instanceof Object) && !(this.findPersonByPhoneNumber(person.getPhoneNumber()) instanceof Object)){
-			persons.add(person);
-			
+			persons.add(person); 
 		}
 		
 		
@@ -43,26 +47,14 @@ public class ListRegister implements Register, Serializable {
 
 	@Override
 	public Person findPersonByName(String name) {
-		Iterator<Person> fIterator = persons.iterator();
-		while(fIterator.hasNext()){
-			Person person = fIterator.next();
-			if(person.getName().equals(name)){
-				return person;
-			}
-		}
-		return null;
+		
+		return  persons.stream().filter(s -> s.getName().equalsIgnoreCase(name)).findFirst().orElse(null);
+		
 	}
 
 	@Override
 	public Person findPersonByPhoneNumber(String phoneNumber) {
-		Iterator<Person> fIterator = persons.iterator();
-		while(fIterator.hasNext()){
-			Person person = fIterator.next();
-			if(person.getPhoneNumber().equals(phoneNumber)){
-				return person;
-			}
-		}
-		return null;
+		return persons.stream().filter(s -> s.getPhoneNumber().equalsIgnoreCase(phoneNumber)).findFirst().orElse(null);
 	}
 
 	@Override

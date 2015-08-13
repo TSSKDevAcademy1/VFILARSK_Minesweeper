@@ -12,6 +12,7 @@ public class ConsoleUI {
     /** register.Register of persons. */
     private Register register;
     private RegisterLoader registerLoader;
+  
     
     /**
      * In JDK 6 use Console class instead.
@@ -87,12 +88,13 @@ public class ConsoleUI {
     	register.vypis();
     }
     
-    private void addToRegister() {
+    private void addToRegister() throws IOException {
     	System.out.println("Napis meno a priezvisko");
         String name = readLine();
         System.out.println("Napis telefonne cislo");
         String number = readLine();
-        register.addPerson(new Person(name,number));;
+        register.addPerson(new Person(name,number));
+        registerLoader.save(register);
     }
     
     //TODO: Implement the method updateRegister

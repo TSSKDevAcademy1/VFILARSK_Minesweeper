@@ -33,7 +33,6 @@ public class FileRegisterLoader implements RegisterLoader {
 	private Register isExist(String registerName) throws ClassNotFoundException, IOException{
 		ObjectInputStream oiReader = new ObjectInputStream(new FileInputStream("register.bin"));
 		Object myReadObject = oiReader.readObject();
-
 		System.out.println(registerName.equals(myReadObject.getClass().toString()));
 		System.out.println(myReadObject.getClass().toString());
 		
@@ -57,20 +56,8 @@ public class FileRegisterLoader implements RegisterLoader {
 	/* (non-Javadoc)
 	 * @see register.RegisterLoader#save(register.Register)
 	 */
-	
 	@Override
-	public void save(Register register){
-		try {
-			save1(register);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
-	
-
-	private void save1(Register register) throws IOException{
+	public void save(Register register) throws IOException{
 		 File file = new File("register.bin");
 	     FileOutputStream fOutputStream = new FileOutputStream(file);
 	     ObjectOutputStream oOutputStream = new ObjectOutputStream(fOutputStream);
@@ -82,21 +69,7 @@ public class FileRegisterLoader implements RegisterLoader {
 	 * @see register.RegisterLoader#load()
 	 */
 	@Override
-	public Register load(){
-		try {
-			return load1();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
-		return null;
-	}
-	
-	
-	public Register load1() throws ClassNotFoundException, IOException{ 
+	public Register load() throws ClassNotFoundException, IOException{ 
 		try (FileInputStream fInputStream = new FileInputStream("register.bin");
 				ObjectInputStream oInputStream = new ObjectInputStream(fInputStream);) {
 			if (kindOfRegister.equals("List")) {

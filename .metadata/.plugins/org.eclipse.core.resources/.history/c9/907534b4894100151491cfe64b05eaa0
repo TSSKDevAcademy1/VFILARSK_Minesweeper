@@ -1,0 +1,23 @@
+package register;
+
+import java.io.FileInputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+
+public class SuperRegisterLoader implements RegisterLoader {
+
+	@Override
+	public void save(Register register) throws IOException {
+		FileReader oiStream = new Filereader(new FileInputStream("dvojzoznam.txt"));
+		
+		
+	}
+
+	@Override
+	public Register load() throws ClassNotFoundException, IOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

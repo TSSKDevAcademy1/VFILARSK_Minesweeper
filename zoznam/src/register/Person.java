@@ -12,7 +12,7 @@ public class Person implements Comparable<Person>, Serializable{
     /**
 	 * 
 	 */
-	
+	private static final long serialVersionUID = 1L;
 
 	/** Name of this person. */
     private String name;
@@ -73,7 +73,7 @@ public class Person implements Comparable<Person>, Serializable{
      * @return <code>true</code> if phone number is valid, <code>false</code> otherwise
      */
     private boolean isValidPhoneNumber(String phoneNumber) {     
-    	Pattern p = Pattern.compile("[0-9]{10}");
+    	Pattern p = Pattern.compile("[0-9]*");
 		Matcher m = p.matcher(phoneNumber);
 		boolean b = m.matches();
         if(b){

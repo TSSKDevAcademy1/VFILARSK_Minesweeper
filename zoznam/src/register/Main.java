@@ -28,7 +28,7 @@ public class Main {
 		 * Person("Vladimir110 Filarsky", "0900123451")); register.addPerson(new
 		 * Person("Filip Fi02larsky", "09001234256"));
 		 */
-		RegisterLoader regLoader = new DatabaseRegisterLoader();
+		RegisterLoader regLoader = new SuperRegisterLoader();
 		ConsoleUI ui = new ConsoleUI(regLoader);
 		ui.run();
 	}
