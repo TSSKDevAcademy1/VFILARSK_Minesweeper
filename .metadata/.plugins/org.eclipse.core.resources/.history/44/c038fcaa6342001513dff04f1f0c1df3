@@ -1,0 +1,25 @@
+package core;
+
+public class EmptyClue extends Tile {
+
+
+	public EmptyClue(int positionX, int positionY,int value) {
+		super(positionX, positionY,value);
+		// TODO Auto-generated constructor stub
+	}
+	public int getValue() {
+		return value;
+	}
+	public void setValue(int value) {
+		this.value = value;
+	}
+
+	public String toString() {
+
+		Integer number = (Integer) getValue();
+		return number.toString();
+
+	}
+	
+
+}

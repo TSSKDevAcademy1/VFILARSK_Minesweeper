@@ -1,0 +1,12 @@
+package core;
+
+public class EmptyClue extends Tile {
+
+	public EmptyClue(int positionX, int positionY) {
+		super(positionX, positionY);
+		// TODO Auto-generated constructor stub
+	}
+
+	
+
+}

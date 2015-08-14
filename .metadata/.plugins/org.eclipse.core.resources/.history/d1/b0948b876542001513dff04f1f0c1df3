@@ -1,0 +1,91 @@
+package core;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+
+
+public class Field {
+
+	private int rowCount = 0;
+	private int columnCount = 0;
+	private final Tile[][] field;
+	private int length = 0;
+	private int actualLength = 0;
+	private int actualRowCount = 0;
+	private int actualColumnCount = 0;
+	
+
+	public Field() {
+		this.rowCount = 4;
+		this.columnCount = 4;
+		this.length = rowCount * columnCount + 1;
+		this.field = new Tile[rowCount][columnCount];
+		generate();
+
+	}
+
+	public Field(int rowCount,int columnCount){
+		this.rowCount = rowCount;
+		this.columnCount = columnCount;
+		this.length = rowCount * columnCount + 1;
+		this.field = new Tile[rowCount][columnCount];
+		generate();
+	}
+	
+	private boolean scaning(int s){
+		for(int x = 0;x< actualRowCount;x++){
+			for(int y = 0; y < actualColumnCount;y++){
+				if(field[x][y].getValue() == s){
+					return false;
+				}
+			}
+		}
+		return true;
+			
+	}
+	
+
+	
+	
+		public Tile[][] generate(){
+			int count = 0;
+	        int randomRow =0;
+	        int randomColumn =0;
+	        int randomValue = 0;
+	        Random random = new Random();
+	    	/*while(count < 1){
+	    		randomRow = random.nextInt(rowCount-1);
+	    		randomColumn = random.nextInt(columnCount-1);
+	    		if(!(field[randomRow][randomColumn] instanceof Mine)){
+	    			field[randomRow][randomColumn] = new EmptyClue(randomRow,randomColumn);
+	    			count++;
+	    		} 
+	    	} */
+	    	for(int r=0;r<rowCount;r++){
+	    		for(int c=0;c<columnCount;c++){
+	    			if(field[r][c] == null){
+	    				Random random2 = new Random();
+	    				int randomValueNumber = random2.nextInt(length-1);
+	    				while(scaning(randomValueNumber)){
+	    					randomValueNumber = random2.nextInt(length-1);
+	    				}
+	    				field[r][c] = new Clue(r,c,randomValueNumber);
+	    			}
+	    		}
+	    	}
+	    	field[rowCount-1][columnCount-1] = new Clue(rowCount-1,columnCount-1,99);
+	    	System.out.println("Idem);
+	    	return field;
+	}
+	
+	public void vypis(){
+		for(int r=0;r<rowCount;r++){
+    		for(int c=0;c<columnCount;c++){
+    			System.out.println("Ahoj");
+    		}
+	}
+		}
+}
+

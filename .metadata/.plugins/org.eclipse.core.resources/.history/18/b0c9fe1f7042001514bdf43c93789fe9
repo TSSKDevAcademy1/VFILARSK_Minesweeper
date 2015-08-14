@@ -1,0 +1,11 @@
+import myCore.Field;
+
+public class TilesGame {
+
+	public static void main(String[] args) {
+		Field field = new Field();
+		field.vypis();
+
+	}
+
+}

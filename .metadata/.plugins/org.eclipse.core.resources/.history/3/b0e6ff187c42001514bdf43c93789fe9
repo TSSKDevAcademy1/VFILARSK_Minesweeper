@@ -1,0 +1,15 @@
+import java.io.IOException;
+
+import consoleUI.ConsoleUI;
+import myCore.Field;
+
+public class TilesGame {
+
+	public static void main(String[] args) throws IOException {
+		Field field = new Field(2,2);
+		BestTimes bestTimes = new BestTimes();
+		ConsoleUI ui = new ConsoleUI(field,bestTimes);
+		
+	}
+
+}

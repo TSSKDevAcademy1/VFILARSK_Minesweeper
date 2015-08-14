@@ -1,0 +1,137 @@
+package consoleUI;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+import myCore.Field;
+
+
+
+public class ConsoleUI {
+
+	Field field;
+	private BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+	
+	public ConsoleUI(Field field) throws IOException{
+		this.field = field;
+		update();
+	}
+	
+	public void processInput() throws IOException{
+		System.out.println("Vyber volbu: new pre novu hru,exit pre ukoncenie, w s a d pre ovladanie");
+		String line = input.readLine();
+		switch(line){
+		case "new": newGame();break;
+		case "exit": exit();break;
+		case "w": moveUp(field);break;
+		case "a": moveLeft();break;
+		case "s": moveDown(field);break;
+		case "d": moveRight();break;
+		}
+	}
+	
+	public void newGame(){
+		
+	}
+	
+	public void exit(){
+		
+	}
+	
+	public void moveUp(Field field) {
+		int emptyRow = 0;
+		int emptyColumn = 0;
+		for (int r = 0; r < field.getRowCount(); r++) {
+			for (int c = 0; c < field.getColumnCount(); c++) {
+				if (field.getTile(r, c).getValue() == 99) {
+					emptyRow = field.getTile(r, c).getPositionX();
+					emptyColumn = field.getTile(r, c).getPositionY();
+					System.out.printf("Pozicia: " + emptyRow + emptyColumn + "\n");
+				}
+			}
+		}
+		if (emptyRow + 1 <= field.getRowCount() -1) {
+			System.out.println("Teraz idem");
+			field.setTile(emptyRow, emptyColumn, field.getTile(emptyRow + 1, emptyColumn).getValue());
+			System.out.println("Teraz idem");
+			field.setTile(emptyRow + 1, emptyColumn, 99);
+
+		}
+	}
+	
+	public void moveDown(Field field) {
+		int emptyRow = 0;
+		int emptyColumn = 0;
+		for (int r = 0; r < field.getRowCount(); r++) {
+			for (int c = 0; c < field.getColumnCount(); c++) {
+				if (field.getTile(r, c).getValue() == 99) {
+					emptyRow = field.getTile(r, c).getPositionX();
+					emptyColumn = field.getTile(r, c).getPositionY();
+					System.out.printf("Pozicia: " + emptyRow + emptyColumn + "\n");
+				}
+			}
+		}
+		if (emptyRow - 1 >= 0) {
+			System.out.println("Teraz idem");
+			field.setTile(emptyRow, emptyColumn, field.getTile(emptyRow - 1, emptyColumn).getValue());
+			System.out.println("Teraz idem");
+			field.setTile(emptyRow - 1, emptyColumn, 99);
+
+		}
+	}
+	
+	public void moveRight(){
+		int emptyRow = 0;
+		int emptyColumn = 0;
+		for (int r = 0; r < field.getRowCount(); r++) {
+			for (int c = 0; c < field.getColumnCount(); c++) {
+				if (field.getTile(r, c).getValue() == 99) {
+					emptyRow = field.getTile(r, c).getPositionX();
+					emptyColumn = field.getTile(r, c).getPositionY();
+					System.out.printf("Pozicia: " + emptyRow + emptyColumn + "\n");
+				}
+			}
+		}
+		if (emptyColumn - 1 <= 0) {
+			System.out.println("Teraz idem");
+			field.setTile(emptyRow, emptyColumn, field.getTile(emptyRow, emptyColumn-1).getValue());
+			System.out.println("Teraz idem");
+			field.setTile(emptyRow, emptyColumn-1, 99);
+
+		}
+	}
+	
+	public void moveLeft(){
+		int emptyRow = 0;
+		int emptyColumn = 0;
+		for (int r = 0; r < field.getRowCount(); r++) {
+			for (int c = 0; c < field.getColumnCount(); c++) {
+				if (field.getTile(r, c).getValue() == 99) {
+					emptyRow = field.getTile(r, c).getPositionX();
+					emptyColumn = field.getTile(r, c).getPositionY();
+					System.out.printf("Pozicia: " + emptyRow + emptyColumn + "\n");
+				}
+			}
+		}
+		if (emptyColumn + 1 <= field.getRowCount()-1) {
+			System.out.println("Teraz idem");
+			field.setTile(emptyRow, emptyColumn, field.getTile(emptyRow, emptyColumn + 1).getValue());
+			System.out.println("Teraz idem");
+			field.setTile(emptyRow, emptyColumn + 1, 99);
+
+		}
+	}
+	
+	public void update() throws IOException{
+		System.out.println("row"+ field.getRowCount());
+		System.out.println("col"+ field.getColumnCount());
+		System.out.println("ide update");
+		while(true){
+			field.vypis();
+			processInput();
+		}
+	}
+	
+}
+

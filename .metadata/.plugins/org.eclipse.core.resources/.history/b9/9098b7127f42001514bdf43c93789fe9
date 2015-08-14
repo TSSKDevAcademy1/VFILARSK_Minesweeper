@@ -1,0 +1,20 @@
+package myCore;
+
+public class EmptyClue extends Tile {
+
+
+	public EmptyClue(int positionX, int positionY,int value) {
+		super(positionX, positionY,value);
+		// TODO Auto-generated constructor stub
+	}
+	
+
+	public String toString() {
+
+		Integer number = (Integer) getValue();
+		return number.toString();
+
+	}
+	
+
+}
