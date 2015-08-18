@@ -1,0 +1,11 @@
+package model;
+
+import javax.persistence.Entity;
+
+@Entity
+public class Car {
+	private String producer;
+	private String name;
+	private Date yearOfProduction;
+
+}

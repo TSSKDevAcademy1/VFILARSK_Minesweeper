@@ -1,0 +1,22 @@
+1439798183703	Move compilation unit
+1439798293858	Encapsulate field 'name'
+1439798298476	Encapsulate field 'age'
+1439798302055	Encapsulate field 'gender'
+1439807248978	Encapsulate field 'birthday'
+1439811328945	Encapsulate field 'name'
+1439811332347	Encapsulate field 'address'
+1439811336438	Encapsulate field 'employeesCount'
+1439811339207	Encapsulate field 'founded'
+1439895351771	Encapsulate field 'zip'
+1439895358058	Encapsulate field 'state'
+1439895363648	Encapsulate field 'city'
+1439895367799	Encapsulate field 'number'
+1439895373473	Encapsulate field 'street'
+1439896547454	Encapsulate field 'username'
+1439896556018	Encapsulate field 'id'
+1439898338832	Encapsulate field 'employer'
+1439899798549	Delete element
+1439900951567	Encapsulate field 'producer'
+1439900955579	Encapsulate field 'name'
+1439900959441	Encapsulate field 'yearOfProduction'
+1439901618610	Delete element
