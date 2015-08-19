@@ -18,4 +18,8 @@ public class CompanyDao {
 		}
 	}
 	
+	public Company find(long id){
+		return JpaHelper.getEntityManager().find(Company.class, id);
+	}
+	
 }

@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
+import javax.persistence.CascadeType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,7 +27,7 @@ public class Person {
 	@Id	
 	@GeneratedValue
 	private long id;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Company employer;
 	
 	

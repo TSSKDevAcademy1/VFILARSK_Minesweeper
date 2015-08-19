@@ -9,8 +9,10 @@ import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Persistence;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -27,8 +29,13 @@ public class Company {
 	@GeneratedValue
 	private long id;
 	
-	@ElementCollection
+	@ElementCollection(fetch =FetchType.LAZY)
 	private List<String> telephoneNumbers = new ArrayList<String>();
+	
+	@OneToMany
+	private List<Person> employees = new ArrayList<Person>();
+	
+	
 	
 	public String getName() {
 		return name;
@@ -66,6 +73,10 @@ public class Company {
 	
 	public List<String> getTelephoneNumber(){
 		return telephoneNumbers;
+	}
+	
+	public void addEmployee(Person person){
+		employees.add(person);
 	}
 	
 	
