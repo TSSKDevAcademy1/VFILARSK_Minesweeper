@@ -28,8 +28,7 @@ public class Company {
 	@Id
 	@GeneratedValue
 	private long id;
-	@OneToMany
-	private List<Invoice> invoices = new ArrayList<Invoice>();
+	
 	@ElementCollection(fetch =FetchType.LAZY)
 	private List<String> telephoneNumbers = new ArrayList<String>();
 	
@@ -78,16 +77,6 @@ public class Company {
 	
 	public void addEmployee(Person person){
 		employees.add(person);
-	}
-	public List<Invoice> getInvoices() {
-		return invoices;
-	}
-	public void setInvoices(List<Invoice> invoices) {
-		this.invoices = invoices;
-	}
-	
-	public void addInvoice(Invoice invoice){
-		invoices.add(invoice);
 	}
 	
 	

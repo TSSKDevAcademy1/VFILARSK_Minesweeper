@@ -1,0 +1,8 @@
+package model;
+
+public class InvoiceDao {
+
+	public void saveInvoice(Invoice invoice){
+		
+	}
+}

@@ -122,12 +122,6 @@ public class App {
 		//CompanyDao compDao = new CompanyDao();
 
 		transaction.begin();
-        app.em.persist(item1);
-        app.em.persist(item2);
-        app.em.persist(item3);
-        transaction.commit();
-		
-		transaction.begin();
         app.em.persist(invoice);
         transaction.commit();
         

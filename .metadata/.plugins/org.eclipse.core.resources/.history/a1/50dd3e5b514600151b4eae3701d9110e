@@ -12,8 +12,6 @@ import model.Address;
 import model.Company;
 import model.CompanyDao;
 import model.Gender;
-import model.Invoice;
-import model.Item;
 import model.JpaHelper;
 import model.Person;
 
@@ -83,14 +81,12 @@ public class App {
 		company1.setFounded(new Date());
 		company1.setName("Chiradelta");
 		
-		Item item1 = new Item("auto",3,500);
-		Item item2 = new Item("motorka",2,300);
-		Item item3 = new Item("cln",5,1500);
-		Invoice  invoice = new Invoice(company1,"Kosicka 33",new Date(),new Date(),"014132/0100");
-		invoice.addItem(item1);
-		invoice.addItem(item2);
-		invoice.addItem(item3);
-		company1.addInvoice(invoice);
+		Person person4 = new Person();
+		person4.setAge(28);
+		person4.setName("Jano Filarsky");
+		person4.setGender(Gender.MALE);
+		person4.setBirthday(new Date());
+		person4.setEmployer(company1);
        
 		
 		/*
@@ -121,19 +117,9 @@ public class App {
         
 		//CompanyDao compDao = new CompanyDao();
 
-		transaction.begin();
-        app.em.persist(item1);
-        app.em.persist(item2);
-        app.em.persist(item3);
-        transaction.commit();
-		
-		transaction.begin();
-        app.em.persist(invoice);
-        transaction.commit();
-        
 		 System.out.println("Ides1?");
         transaction.begin();
-        app.em.persist(company1);
+        app.em.persist(person4);
         transaction.commit();
         System.out.println("Ides?");
 		

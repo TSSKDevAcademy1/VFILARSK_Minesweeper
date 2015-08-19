@@ -86,9 +86,5 @@ public class Company {
 		this.invoices = invoices;
 	}
 	
-	public void addInvoice(Invoice invoice){
-		invoices.add(invoice);
-	}
-	
 	
 }

@@ -90,7 +90,6 @@ public class App {
 		invoice.addItem(item1);
 		invoice.addItem(item2);
 		invoice.addItem(item3);
-		company1.addInvoice(invoice);
        
 		
 		/*
@@ -121,19 +120,9 @@ public class App {
         
 		//CompanyDao compDao = new CompanyDao();
 
-		transaction.begin();
-        app.em.persist(item1);
-        app.em.persist(item2);
-        app.em.persist(item3);
-        transaction.commit();
-		
-		transaction.begin();
-        app.em.persist(invoice);
-        transaction.commit();
-        
 		 System.out.println("Ides1?");
         transaction.begin();
-        app.em.persist(company1);
+        app.em.persist(person4);
         transaction.commit();
         System.out.println("Ides?");
 		

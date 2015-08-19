@@ -20,3 +20,17 @@
 1439900955579	Encapsulate field 'name'
 1439900959441	Encapsulate field 'yearOfProduction'
 1439901618610	Delete element
+1439971872124	Delete element
+1439972199575	Encapsulate field 'name'
+1439972204616	Encapsulate field 'count'
+1439972210702	Encapsulate field 'price'
+1439972418260	Encapsulate field 'company'
+1439972422180	Encapsulate field 'addressee'
+1439972425303	Encapsulate field 'items'
+1439972601987	Encapsulate field 'id'
+1439972630553	Encapsulate field 'id'
+1439972895218	Encapsulate field 'makeDate'
+1439972901338	Encapsulate field 'expireDate'
+1439972905306	Encapsulate field 'accountNumber'
+1439972920096	Encapsulate field 'priceItems'
+1439975824760	Encapsulate field 'invoices'
