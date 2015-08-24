@@ -1,0 +1,22 @@
+package model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+@Entity
+@DiscriminatorValue("D")
+public class DevelopProject extends Project {
+	
+	//private List<String> technologies = new ArrayList<String>();
+
+	public List<String> getTechnologies() {
+		return technologies;
+	}
+
+	public void setTechnologies(List<String> technologies) {
+		this.technologies = technologies;
+	}
+	
+}

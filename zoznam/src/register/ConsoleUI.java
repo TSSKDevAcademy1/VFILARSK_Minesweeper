@@ -26,10 +26,21 @@ public class ConsoleUI {
     private enum Option {
         PRINT, ADD, UPDATE, REMOVE, FIND, EXIT
     };
-    
-    public ConsoleUI(RegisterLoader registerLoader) throws ClassNotFoundException, IOException {
+    /**
+     * 
+     * @param registerLoader registerLoader for loading list from file/database
+     */
+    public ConsoleUI(RegisterLoader registerLoader){
     	this.registerLoader = registerLoader;
-        this.register = registerLoader.load();
+        try {
+			this.register = registerLoader.load();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
     
     public void run() throws IOException {

@@ -22,4 +22,6 @@ public class CompanyDao {
 		return JpaHelper.getEntityManager().find(Company.class, id);
 	}
 	
+	
+	
 }

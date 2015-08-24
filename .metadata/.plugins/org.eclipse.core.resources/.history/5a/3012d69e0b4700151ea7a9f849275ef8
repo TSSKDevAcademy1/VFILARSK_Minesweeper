@@ -1,0 +1,39 @@
+package register;
+
+import java.io.DataInputStream;
+import java.io.Serializable;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
+/**
+ * Created by jaro on 3.2.2014.
+ */
+public class Main {
+	
+	System.out.println("Vyber si druh ulozenia registra. \n 1.Databáza \n 2.Súbor")
+	
+	
+
+    public static void main(String[] args) throws Exception {
+    	
+		
+		/*
+		 * register.addPerson(new Person("Fi3lfsdcxyip Filarsky",
+		 * "09001213456")); register.addPerson(new Person(
+		 * "Fil4sdc&xaip Filarsky", "0900122123452")); register.addPerson(new
+		 * Person("Vlads6aimXCir Filarsky", "09004123451"));
+		 * register.addPerson(new Person("Filisa1p FiVXCVlarsky",
+		 * "09001123456")); register.addPerson(new Person("Filip&V1 Filarsky",
+		 * "09001234456")); register.addPerson(new Person(
+		 * "Draho Xt21ina Filarska", "0900123452")); register.addPerson(new
+		 * Person("Vladimir110 Filarsky", "0900123451")); register.addPerson(new
+		 * Person("Filip Fi02larsky", "09001234256"));
+		 */
+		RegisterLoader regLoader = new SuperRegisterLoader();
+		ConsoleUI ui = new ConsoleUI(regLoader);
+		ui.run();
+	}
+}

@@ -11,11 +11,13 @@ import javax.persistence.Persistence;
 import model.Address;
 import model.Company;
 import model.CompanyDao;
+import model.DevelopProject;
 import model.Gender;
 import model.Invoice;
 import model.Item;
 import model.JpaHelper;
 import model.Person;
+import model.Project;
 
 /**
  * Hello world!
@@ -47,17 +49,23 @@ public class App {
 			}
 		}
 		
+		public void addProjectToCompany(Project project, Company company){
+			company.addProject(project);
+		}
+			
+		
+		
 
 	public static void main(String[] args) {
 		
 		App app = new App();
-		/*
+		
 		Person person = new Person();
 		person.setAge(24);
 		person.setName("Vlado Filarsky");
 		person.setGender(Gender.MALE);
 		person.setBirthday(new Date());
-		
+		/*
 		Person person1 = new Person();
 		person1.setAge(25);
 		person1.setName("Vlado Filarsky");
@@ -82,7 +90,8 @@ public class App {
 		company1.setEmployeesCount(20);
 		company1.setFounded(new Date());
 		company1.setName("Chiradelta");
-		
+		company1.addEmployee(person);
+		person.setEmployer(company1);
 		Item item1 = new Item("auto",3,500);
 		Item item2 = new Item("motorka",2,300);
 		Item item3 = new Item("cln",5,1500);
@@ -91,7 +100,15 @@ public class App {
 		invoice.addItem(item2);
 		invoice.addItem(item3);
 		company1.addInvoice(invoice);
-       
+        
+		DevelopProject project = new DevelopProject();
+		project.addTechnologies("super technologia 3000");
+		project.setCompany(company1);
+		company1.addProject(project);
+		company1.addEmployee(person);
+		person.addProject(project);
+		project.addPerson(person);
+		person.setEmployer(company1);
 		
 		/*
 		Company company1 = new Company();
@@ -122,21 +139,28 @@ public class App {
 		//CompanyDao compDao = new CompanyDao();
 
 		transaction.begin();
-        app.em.persist(item1);
-        app.em.persist(item2);
-        app.em.persist(item3);
-        transaction.commit();
-		
+		app.em.persist(item1);
+		app.em.persist(item2);
+		app.em.persist(item3);
+		transaction.commit();
+
 		transaction.begin();
-        app.em.persist(invoice);
-        transaction.commit();
-        
-		 System.out.println("Ides1?");
-        transaction.begin();
-        app.em.persist(company1);
-        transaction.commit();
-        System.out.println("Ides?");
-		
+		app.em.persist(invoice);
+		transaction.commit();
+
+		transaction.begin();
+		app.em.persist(person);
+		transaction.commit();
+
+		transaction.begin();
+		app.em.persist(project);
+		transaction.commit();
+
+		System.out.println("Ides1?");
+		transaction.begin();
+		app.em.persist(company1);
+		transaction.commit();
+		System.out.println("Ides?");
 		
 		app.em.close();
 		app.factory.close();

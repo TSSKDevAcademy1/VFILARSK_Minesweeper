@@ -1,0 +1,12 @@
+package model;
+
+import java.util.Date;
+
+public abstract class Project {
+
+	private String Name;
+	private Date startDate;
+	
+	
+}
+

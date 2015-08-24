@@ -16,7 +16,7 @@ public class FileRegisterLoader implements RegisterLoader {
 	private File f;
 	private String kindOfRegister;
 	
-	public FileRegisterLoader() throws IOException, ClassNotFoundException{
+	public FileRegisterLoader() throws ClassNotFoundException, IOException{
 		initializite();
 		System.out.println("Chces 1.pole alebo 2.kolekciu?");
 		String choice = "2";

@@ -28,13 +28,16 @@ public class Company {
 	@Id
 	@GeneratedValue
 	private long id;
-	@OneToMany
+	@OneToMany(mappedBy="company")
 	private List<Invoice> invoices = new ArrayList<Invoice>();
 	@ElementCollection(fetch =FetchType.LAZY)
 	private List<String> telephoneNumbers = new ArrayList<String>();
 	
-	@OneToMany
+	@OneToMany(mappedBy="employer")
 	private List<Person> employees = new ArrayList<Person>();
+	
+	@OneToMany(mappedBy="company")
+	private List<Project> projects =  new ArrayList<Project>();
 	
 	
 	
@@ -89,6 +92,11 @@ public class Company {
 	public void addInvoice(Invoice invoice){
 		invoices.add(invoice);
 	}
+	
+	public void addProject(Project project){
+		projects.add(project);
+	}
+	
 	
 	
 }

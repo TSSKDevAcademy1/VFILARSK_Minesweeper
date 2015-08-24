@@ -1,0 +1,84 @@
+package model;
+
+import java.util.List;
+
+public class VideoArtDAO {
+
+	public void createMovie(Movie movie){
+		JPAHelper.beginTransaction();
+		JPAHelper.getEntityManager().persist(movie);
+		JPAHelper.commitTransaction();
+	}
+	
+	public void createMovie(TVSeries series){
+		JPAHelper.beginTransaction();
+		JPAHelper.getEntityManager().persist(series);
+		JPAHelper.commitTransaction();
+	}
+	
+	public void addDirector(VideoArt videoArt, Celebrity celebrity){
+		videoArt.addDirectors(celebrity);
+		celebrity.addDirected(videoArt);
+		JPAHelper.beginTransaction();
+		JPAHelper.getEntityManager().persist(celebrity);
+		JPAHelper.getEntityManager().persist(videoArt);
+		JPAHelper.commitTransaction();
+		
+	}
+	
+	public void addActor(VideoArt videoArt, Celebrity celebrity){
+		videoArt.addActors(celebrity);
+		celebrity.addActedAt(videoArt);
+		JPAHelper.beginTransaction();
+		JPAHelper.getEntityManager().persist(celebrity);
+		JPAHelper.getEntityManager().persist(videoArt);
+		JPAHelper.commitTransaction();
+		
+	}
+	
+	public void addReview(Review review, VideoArt videoArt){
+		videoArt.addReviews(review);
+		review.setReviewed(videoArt);
+	}
+	
+	public void listFilmInYear(int year){
+		JPAHelper.beginTransaction();
+		List<Movie> movies = JPAHelper.getEntityManager().createQuery("select DISTINCT c FROM Movie c WHERE c.yearOfPublication = :year", Movie.class).setParameter("year", year).getResultList();
+		for(Movie movie :  movies){
+			System.out.println(movie);
+		}
+		JPAHelper.commitTransaction();
+	}
+	
+	public void listFilmWithActor(String celebrityName){
+		JPAHelper.beginTransaction();
+		List<Movie> movies = JPAHelper.getEntityManager().createQuery("select DISTINCT movie FROM Movie as movie JOIN movie.actors as actors WHERE actors.firstName = :celebrityName", Movie.class).setParameter("celebrityName", celebrityName).getResultList();
+		for(Movie movie :  movies){
+			System.out.println(movie);
+		}
+		JPAHelper.commitTransaction();
+	}
+	
+	public void countOfAllSerials(){
+		int count = 0;
+		JPAHelper.beginTransaction();
+		List<TVSeries> series = JPAHelper.getEntityManager().createQuery("select c FROM TVSeries c", TVSeries.class).getResultList();
+		for(TVSeries serie :  series){
+			count++;
+		}
+		System.out.println("Pocet vsetkych serialov je "+ count);
+		JPAHelper.commitTransaction();
+	}
+	
+	public void countOfAllFilms(){
+		int count = 0;
+		JPAHelper.beginTransaction();
+		List<Movie> movies = JPAHelper.getEntityManager().createQuery("select c FROM Movies c", Movie.class).getResultList();
+		for(Movies movie :  movies){
+			count++;
+		}
+		System.out.println("Pocet vsetkych serialov je "+ count);
+		JPAHelper.commitTransaction();
+	}
+}	
+

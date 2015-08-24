@@ -1,5 +1,0 @@
-package microunit;
-
-public class AssertionException extends RuntimeException {
-
-}

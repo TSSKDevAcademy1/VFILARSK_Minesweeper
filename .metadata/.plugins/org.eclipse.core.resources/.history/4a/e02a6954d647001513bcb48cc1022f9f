@@ -1,0 +1,43 @@
+package model;
+
+import java.util.Date;
+
+public class Review {
+
+	private Date datetimeOfCreation;
+	private VideoArt reviewed;
+	private int rating;
+	private String text;
+
+	public Date getDatetimeOfCreation() {
+		return datetimeOfCreation;
+	}
+
+	public void setDatetimeOfCreation(Date datetimeOfCreation) {
+		this.datetimeOfCreation = datetimeOfCreation;
+	}
+
+	public VideoArt getReviewed() {
+		return reviewed;
+	}
+
+	public void setReviewed(VideoArt reviewed) {
+		this.reviewed = reviewed;
+	}
+
+	public int getRating() {
+		return rating;
+	}
+
+	public void setRating(int rating) {
+		this.rating = rating;
+	}
+
+	public String getText() {
+		return text;
+	}
+
+	public void setText(String text) {
+		this.text = text;
+	}
+}

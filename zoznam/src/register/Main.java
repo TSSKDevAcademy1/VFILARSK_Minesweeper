@@ -1,35 +1,57 @@
 package register;
 
+import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.Serializable;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 /**
- * Created by jaro on 3.2.2014.
+ * Created by Vlado.
  */
 public class Main {
-
-    public static void main(String[] args) throws Exception {
-    	
+	
+	private BufferedReader bReader = new BufferedReader(new InputStreamReader(System.in));
+	private RegisterLoader regLoader;
+	private ConsoleUI ui;
+	/**
+	 * Provides choice of register or file for storing and create object for loading selected type. Create object of class
+	 * ConsoleUI and call method run() on this object.
+	 */
+	public void init(){
+		System.out.println("Vyber si druh ulozenia registra. \n 1.Databáza \n 2.Súbor");
+		String i;
+		try {
+			i = bReader.readLine();
+			switch(i){
+			case "1" : regLoader = new DatabaseRegisterLoader();break;
+			case "2" : regLoader = new SuperRegisterLoader();break;
+			}
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
-		/*
-		 * register.addPerson(new Person("Fi3lfsdcxyip Filarsky",
-		 * "09001213456")); register.addPerson(new Person(
-		 * "Fil4sdc&xaip Filarsky", "0900122123452")); register.addPerson(new
-		 * Person("Vlads6aimXCir Filarsky", "09004123451"));
-		 * register.addPerson(new Person("Filisa1p FiVXCVlarsky",
-		 * "09001123456")); register.addPerson(new Person("Filip&V1 Filarsky",
-		 * "09001234456")); register.addPerson(new Person(
-		 * "Draho Xt21ina Filarska", "0900123452")); register.addPerson(new
-		 * Person("Vladimir110 Filarsky", "0900123451")); register.addPerson(new
-		 * Person("Filip Fi02larsky", "09001234256"));
-		 */
-		RegisterLoader regLoader = new SuperRegisterLoader();
-		ConsoleUI ui = new ConsoleUI(regLoader);
-		ui.run();
+		ui = new ConsoleUI(regLoader);
+		try {
+			ui.run();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	/**
+	 * Create object of class Main
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		Main main1 = new Main();
+		main1.init();
 	}
 }

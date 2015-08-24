@@ -73,15 +73,22 @@ public class Person implements Comparable<Person>, Serializable{
      * @return <code>true</code> if phone number is valid, <code>false</code> otherwise
      */
     private boolean isValidPhoneNumber(String phoneNumber) {     
-    	Pattern p = Pattern.compile("[0-9]*");
+    	/*Pattern p = Pattern.compile("[0-9]*");
 		Matcher m = p.matcher(phoneNumber);
 		boolean b = m.matches();
         if(b){
         	return true;
         } else {
         	return false;
-        }
-		
+        } */
+    	boolean bool = false;
+    	int length = phoneNumber.length();
+    	for(int i = 0;i<length;i++){
+    		if((bool = Character.isDigit(phoneNumber.charAt(i))) == false){
+    			return bool;
+    		}
+    	}
+		return bool;
     }
     
     /**

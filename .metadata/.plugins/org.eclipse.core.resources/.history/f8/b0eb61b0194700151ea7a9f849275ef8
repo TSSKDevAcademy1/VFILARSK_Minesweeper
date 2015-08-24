@@ -1,0 +1,16 @@
+package model;
+
+public class ManagementProject extends Project {
+
+	private String description;
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+	
+}

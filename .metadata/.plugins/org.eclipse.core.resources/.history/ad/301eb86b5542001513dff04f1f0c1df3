@@ -1,6 +1,0 @@
-package core;
-
-public class Clue extends Tile{
-
-	
-}

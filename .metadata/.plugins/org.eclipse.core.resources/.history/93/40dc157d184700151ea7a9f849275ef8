@@ -1,0 +1,18 @@
+package model;
+
+import java.util.Date;
+
+public abstract class Project {
+
+	private String Name;
+	private Date startDate;
+	public String getName() {
+		return Name;
+	}
+	public void setName(String name) {
+		Name = name;
+	}
+	
+	
+}
+

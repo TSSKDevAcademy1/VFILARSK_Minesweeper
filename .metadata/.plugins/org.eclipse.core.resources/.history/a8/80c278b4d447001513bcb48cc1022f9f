@@ -1,0 +1,66 @@
+package model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public abstract class VideoArt {
+
+	private String name;
+	private String yearOfPublication;
+	private List<Genre> genres = new ArrayList<Genre>();
+	private List<Celebrity> directors = new ArrayList<Celebrity>();
+	private List<Celebrity> actors = new ArrayList<Celebrity>();
+	private List<Review> reviews = new ArrayList<Review>();
+	private List<String> additionalInfo = new ArrayList<String>();
+	
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getYearOfPublication() {
+		return yearOfPublication;
+	}
+
+	public void setYearOfPublication(String yearOfPublication) {
+		this.yearOfPublication = yearOfPublication;
+	}
+
+	public List<Genre> getGenres() {
+		return genres;
+	}
+
+	public void setGenres(List<Genre> genres) {
+		this.genres = genres;
+	}
+
+	public List<Celebrity> getDirectors() {
+		return directors;
+	}
+
+	public void setDirectors(List<Celebrity> directors) {
+		this.directors = directors;
+	}
+
+	public List<Celebrity> getActors() {
+		return actors;
+	}
+
+	public void setActors(List<Celebrity> actors) {
+		this.actors = actors;
+	}
+
+	public List<Review> getReviews() {
+		return reviews;
+	}
+
+	public void setReviews(List<Review> reviews) {
+		this.reviews = reviews;
+	}
+	
+	
+}

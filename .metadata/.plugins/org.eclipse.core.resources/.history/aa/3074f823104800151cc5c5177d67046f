@@ -1,0 +1,158 @@
+package sk.tsystems.akademia.FilmDB;
+
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+
+import model.Celebrity;
+import model.Genre;
+import model.GenreDAO;
+import model.Movie;
+import model.Review;
+import model.TVSeries;
+import model.VideoArt;
+import model.VideoArtDAO;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+	private EntityManagerFactory factory = Persistence.createEntityManagerFactory("hibernatePersistenceUnit");
+	private EntityManager em = factory.createEntityManager();
+	EntityTransaction transaction = em.getTransaction();
+    public static void main( String[] args )
+    {
+    	Movie kokosiNaSnehu = new Movie();
+    	kokosiNaSnehu.setName("Kokosi na snehu");
+    	/*	
+    	Celebrity bradPitt = new Celebrity();
+    	bradPitt.setFirstName("Brad Pitt");
+    	
+    	Movie titanic = new Movie();
+    	titanic.setName("Titanic");
+    	
+    	Movie troja = new Movie();
+    	troja.setName("Troja");
+    	troja.addActors(bradPitt);
+    	troja.setYearOfPublication(1991);
+    	Movie grandTorino = new Movie();
+    	grandTorino.setYearOfPublication(2005);
+    	grandTorino.setName("Grand Torino");
+    	Movie rivali = new Movie();
+    	rivali.setName("Rivali");
+    	rivali.setYearOfPublication(2005);
+    	bradPitt.addActedAt(troja);
+    	*/
+    	
+    	/*
+    	TVSeries priatelia = new TVSeries();
+    	priatelia.setName("Priatelia");
+    	TVSeries adamsovci = new TVSeries();
+    	adamsovci.setName("Adamsovci");
+    	TVSeries alf = new TVSeries();
+    	alf.setName("Alf");
+    	TVSeries house = new TVSeries();
+    	house.setName("House");
+    	TVSeries castle = new TVSeries();
+    	castle.setName("Castle");
+    	
+    	Celebrity bradPitt = new Celebrity();
+    	bradPitt.setFirstName("Brad Pitt");
+    	Celebrity farel = new Celebrity();
+    	farel.setFirstName("Coli Faren");
+    	Celebrity diesel = new Celebrity();
+    	diesel.setFirstName("Vin Diesel");
+    	Celebrity lorie = new Celebrity();
+    	lorie.setFirstName("Hugh Lorie");
+    	Celebrity omar = new Celebrity();
+    	omar.setFirstName("Omar Epps");
+    	Celebrity spencer = new Celebrity();
+    	spencer.setFirstName("Jesse Spencer");
+    	Celebrity edelstein = new Celebrity();
+    	edelstein.setFirstName("Edelstein Lisa");
+    	
+    	Genre thriller = new Genre();
+    	thriller.setName("Thriller");
+    	Genre parody = new Genre();
+    	parody.setName("Parody");
+    	Genre drama = new Genre();
+    	drama.setName("Drama");
+    	Genre document = new Genre();
+    	document.setName("Document");
+    	
+    	Review review1 = new Review();
+    	review1.setText("Dal sa");
+    	review1.setRating(10);
+    	
+    	Review review2 = new Review();
+    	review2.setText("Nedal sa");
+    	review2.setRating(0);
+    	
+    	Review review3 = new Review();
+    	review3.setText("Polovicne sa dal");
+    	review3.setRating(5);
+    	
+    	
+    	
+    	System.out.println("Nazdar");
+    	Movie scaryMovie = new Movie();
+    	scaryMovie.setName("Scary Movie");
+    	Review review = new Review();
+    	Genre comedy = new Genre();
+    	Celebrity angelinaJolie = new Celebrity();
+    	
+    	angelinaJolie.addDirected(scaryMovie);
+    	angelinaJolie.addActedAt(scaryMovie);
+    	scaryMovie.addActors(angelinaJolie);
+    	scaryMovie.addDirectors(angelinaJolie);
+    	scaryMovie.addGenres(comedy);
+    	scaryMovie.addReviews(review);
+    	review.setDatetimeOfCreation(new Date());
+    	review.setReviewed(scaryMovie);
+    	review.setRating(5);
+    	comedy.setName("Comedy");
+    	comedy.setDescription("Funny films");
+    	*/
+    	System.out.println("Serus");
+    	App application = new App();
+    	EntityTransaction transaction = application.transaction;
+    	
+    	//GenreDAO genreDAO = new GenreDAO();
+    	//genreDAO.listAllGenres();
+    	
+    	VideoArtDAO videoDAO = new VideoArtDAO();
+    	//videoDAO.listFilmInYear(2005);
+    	//videoDAO.listFilmWithActor("Brad Pitt");
+    	//videoDAO.countOfAllSerials();
+    	//videoDAO.countOfAllMovies();
+    	/*
+    	transaction.begin();
+    	application.em.persist(comedy);
+    	transaction.commit();
+    	transaction.begin();
+    	application.em.persist(scaryMovie);
+    	transaction.commit();
+    	
+    	transaction.begin();
+    	application.em.persist(angelinaJolie);
+    	transaction.commit();
+    	
+    	transaction.begin();
+    	application.em.persist(review);
+    	transaction.commit();
+    	*/
+    	transaction.begin();
+    	application.em.persist(kokosiNaSnehu);
+    	transaction.commit();
+    	
+    	
+    	application.em.close();
+    	application.factory.close();
+    }
+}

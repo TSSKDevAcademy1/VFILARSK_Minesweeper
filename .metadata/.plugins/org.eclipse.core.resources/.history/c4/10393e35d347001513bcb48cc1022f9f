@@ -1,0 +1,16 @@
+package model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public abstract class VideoArt {
+
+	private String name;
+	private String yearOfPublication;
+	private List<Genre> genres = new ArrayList<Genre>();
+	private List<Celebrity> directors = new ArrayList<Celebrity>();
+	private List<Celebrity> actors = new ArrayList<Celebrity>();
+	private List<Review> reviews = new ArrayList<Review>();
+	private List<String> additionalInfo = new ArrayList<String>();
+	
+}

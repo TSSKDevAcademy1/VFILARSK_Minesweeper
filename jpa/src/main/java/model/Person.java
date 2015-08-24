@@ -8,8 +8,10 @@ import java.util.Random;
 import javax.persistence.CascadeType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -29,9 +31,10 @@ public class Person {
 	private long id;
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Company employer;
+	@ManyToMany(cascade = CascadeType.ALL)
+	private List<Project> projects = new ArrayList<Project>();
 	
-	
-	@ElementCollection
+	@ElementCollection(fetch =FetchType.LAZY)
 	private List<String> happyNumbers = new ArrayList<String>();
 	
 	public Person(){
@@ -81,5 +84,9 @@ public class Person {
 
 	public void setEmployer(Company employer) {
 		this.employer = employer;
+	}
+	
+	public void addProject(Project project){
+		projects.add(project);
 	}
 }
